@@ -1,3 +1,3 @@
 # Beat-Up-Boys
 
-A Smash Bros clone made in SFML and C++.
+A Smash Bros clone I made in SFML (Pre-Alpha).
