@@ -5,7 +5,7 @@
 using namespace sf;
 
 int main() {
-    RenderWindow window(VideoMode(800, 600), "Super Smash Bros, Recreated");
+    RenderWindow window(VideoMode(800, 600), "Beat-Up Boys");
 
     enum state { title, charSelect, stageSelect, fight };
 
@@ -21,7 +21,7 @@ int main() {
 
     // Set up title text!
 
-    Text titleScreen("\t\t\t\tSuper Smash Bros\n\n\n\n\n\n\n\n\n\n\t\t\t\tPress A to play", font, 30);
+    Text titleScreen("\t\t\t\tBeat-Up-Boys\n\n\n\n\n\n\n\n\n\n\t\t\t\tPress A to play", font, 30);
     titleScreen.setStyle(Text::Bold);
     titleScreen.setFillColor(Color::White);
 
