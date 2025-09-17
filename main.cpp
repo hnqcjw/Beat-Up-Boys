@@ -1,13 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
+#include "render.h"
 
 using namespace sf;
 
 int main() {
     RenderWindow window(VideoMode(800, 600), "Beat-Up Boys");
-
-    enum state { title, charSelect, stageSelect, fight };
 
     Font font;
     if (!font.loadFromFile("./assets/tuffy.ttf")) {
@@ -44,7 +43,7 @@ int main() {
         if (currentState == title && Keyboard::isKeyPressed(Keyboard::A)) {
             currentState = charSelect;
         }
-
+/*
         if (currentState == title)  {
             window.draw(titleScreen);
             currentBgColor = Color::Blue;
@@ -53,9 +52,10 @@ int main() {
             window.draw(demoText);
             currentBgColor = Color::Black;
         }
+        */
+        render(currentState, titleScreen, currentBgColor, demoText, window);
         window.display();
     }
 
     return 0;
 }
-
