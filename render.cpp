@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
-#include "render.h"
+#include "headers/render.h"
 
 using namespace sf;
 
-void render(state& currentState, Text& titleScreen, Color& currentBgColor, Text& demoText, RenderWindow& window) {
+void render(state& currentState, Text& titleScreen, Color& currentBgColor, Text& demoText, Sprite& RedBoy, RenderWindow& window) {
     if (currentState == title)  {
         window.draw(titleScreen);
+        window.draw(RedBoy);
         currentBgColor = Color::Blue;
     }
     else if (currentState == charSelect) {

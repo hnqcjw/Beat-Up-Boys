@@ -6,6 +6,6 @@ using namespace sf;
 
 enum state { title, charSelect, stageSelect, fight };
 
-void render(state& currentState, Text& titleScreen, Color& currentBgColor, Text& demoText, RenderWindow& window);
+void render(state& currentState, Text& titleScreen, Color& currentBgColor, Text& demoText, Sprite& RedBoy, RenderWindow& window);
 
 #endif

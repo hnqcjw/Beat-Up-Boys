@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
-#include "render.h"
+#include "headers/render.h" // render function
 
 using namespace sf;
 
@@ -9,10 +9,18 @@ int main() {
     RenderWindow window(VideoMode(800, 600), "Beat-Up Boys");
 
     Font font;
-    if (!font.loadFromFile("./assets/tuffy.ttf")) {
+    if (!font.loadFromFile("./assets/tuffy.ttf")) { // LOAD FROM ASSETS
         std::cerr << "No Font";
         return EXIT_FAILURE;
     }
+
+    Texture RedBoyImg;
+    if (!RedBoyImg.loadFromFile("./assets/RedBoy.png")) {
+        std::cerr << "No RedBoyImg.png found.";
+        return EXIT_FAILURE;
+    }
+    Sprite RedBoy;
+    RedBoy.setTexture(RedBoyImg);
 
     Color currentBgColor = Color::Blue;
 
@@ -24,17 +32,17 @@ int main() {
     titleScreen.setStyle(Text::Bold);
     titleScreen.setFillColor(Color::White);
 
-    Text demoText("Fighting: Coming Soon!", font, 30);
-    demoText.setFillColor(Color::Red);
+    Text charMenu("CHOOSE YOUR CHARACTER", font, 30);
+    charMenu.setFillColor(Color::Red);
     while (window.isOpen()) {
         Event event;
         while (window.pollEvent(event)) {
             if (event.type == Event::Closed) {
                 window.close();
             }
-        }
+         }
 
-        // Handle real-time input
+        // Handle real-time input (Esc Key)
         if (Keyboard::isKeyPressed(Keyboard::Escape)) {
             window.close();
         }
@@ -43,17 +51,9 @@ int main() {
         if (currentState == title && Keyboard::isKeyPressed(Keyboard::A)) {
             currentState = charSelect;
         }
-/*
-        if (currentState == title)  {
-            window.draw(titleScreen);
-            currentBgColor = Color::Blue;
-        }
-        else if (currentState == charSelect) {
-            window.draw(demoText);
-            currentBgColor = Color::Black;
-        }
-        */
-        render(currentState, titleScreen, currentBgColor, demoText, window);
+
+        render(currentState, titleScreen, currentBgColor, charMenu, RedBoy, window);
+
         window.display();
     }
 
