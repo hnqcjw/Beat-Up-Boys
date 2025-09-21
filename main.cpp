@@ -2,6 +2,7 @@
 #include <SFML/Window.hpp>
 #include <iostream>
 #include "headers/render.h" // render function
+#include "headers/sfutils.h"
 
 using namespace sf;
 
@@ -14,13 +15,10 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    Texture RedBoyImg;
-    if (!RedBoyImg.loadFromFile("./assets/RedBoy.png")) {
-        std::cerr << "No RedBoyImg.png found.";
-        return EXIT_FAILURE;
-    }
-    Sprite RedBoy;
-    RedBoy.setTexture(RedBoyImg);
+    DECLARESPRITE(RedBoy, "./assets/RedBoy.png"); // Refer to headers/render.h
+
+    RedBoy.setPosition({100.f, 100.f});
+    RedBoy.setScale({4.f, 4.f});
 
     Color currentBgColor = Color::Blue;
 
@@ -34,6 +32,7 @@ int main() {
 
     Text charMenu("CHOOSE YOUR CHARACTER", font, 30);
     charMenu.setFillColor(Color::Red);
+
     while (window.isOpen()) {
         Event event;
         while (window.pollEvent(event)) {
@@ -43,15 +42,14 @@ int main() {
          }
 
         // Handle real-time input (Esc Key)
-        if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+        if (KEYPRESSED(Escape)) {
             window.close();
         }
 
         window.clear(currentBgColor);
-        if (currentState == title && Keyboard::isKeyPressed(Keyboard::A)) {
+        if (currentState == title && KEYPRESSED(A)) {
             currentState = charSelect;
         }
-
         render(currentState, titleScreen, currentBgColor, charMenu, RedBoy, window);
 
         window.display();
