@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include "headers/render.h"
-#include "headers/sfutils.h"
+#include "headers/render.hpp"
+#include "headers/sfutils.hpp"
 
 using namespace sf;
 

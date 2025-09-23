@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
-#include "headers/render.h" // render function
-#include "headers/sfutils.h"
+#include "headers/render.hpp" // render function
+#include "headers/sfutils.hpp"
 
 using namespace sf;
 
@@ -10,12 +10,12 @@ int main() {
     RenderWindow window(VideoMode(800, 600), "Beat-Up Boys");
 
     Font font;
-    if (!font.loadFromFile("./assets/tuffy.ttf")) { // LOAD FROM ASSETS
+    if (!font.loadFromFile("../assets/tuffy.ttf")) { // LOAD FROM ASSETS
         std::cerr << "No Font";
         return EXIT_FAILURE;
     }
 
-    DECLARESPRITE(RedBoy, "./assets/RedBoy.png"); // Refer to headers/render.h
+    DECLARESPRITE(RedBoy, "../assets/RedBoy.png"); // Refer to headers/render.h
 
     RedBoy.setPosition({100.f, 100.f});
     RedBoy.setScale({4.f, 4.f});

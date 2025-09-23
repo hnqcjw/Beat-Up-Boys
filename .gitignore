@@ -32,11 +32,12 @@
 *.a
 *.lib
 
-# Executables
+# Executables & Builds
 *.exe
 *.out
 *.app
 main
+build/
 
 # debug information files
 *.dwo
