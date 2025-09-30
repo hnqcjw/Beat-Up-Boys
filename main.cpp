@@ -16,10 +16,18 @@ int main() {
     }
 
     DECLARESPRITE(RedBoy, "../assets/RedBoy.png"); // Refer to headers/render.h
-
+    DECLARESPRITE(BluBoy, "../assets/BluBoy.png");
+    DECLARESPRITE(YelloBoy, "../assets/YelloBoy.png");
+    DECLARESPRITE(GreenBoy, "../assets/GreenBoy.png");
     RedBoy.setPosition({100.f, 100.f});
     RedBoy.setScale({4.f, 4.f});
-
+    BluBoy.setPosition({200.f, 100.f});
+    BluBoy.setScale({4.f, 4.f});
+    YelloBoy.setPosition({300.f, 100.f});
+    YelloBoy.setScale({4.f, 4.f});
+	GreenBoy.setPosition({400.f, 100.f});
+    GreenBoy.setScale({4.f, 4.f});  
+    
     Color currentBgColor = Color::Blue;
 
     state currentState = title;
@@ -46,14 +54,13 @@ int main() {
             window.close();
         }
 
-        window.clear(currentBgColor);
         if (currentState == title && KEYPRESSED(A)) {
             currentState = charSelect;
         }
-        render(currentState, titleScreen, currentBgColor, charMenu, RedBoy, window);
-
+        
+        render()
+        
         window.display();
-    }
-
+        }
     return 0;
 }

@@ -1,5 +1,5 @@
-#ifndef __SF_UTILS_H
-#define __SF_UTILS_H
+#ifndef __SF_UTILS_HPP
+#define __SF_UTILS_HPP
 
 #define DRAW(X) window.draw(X)
 

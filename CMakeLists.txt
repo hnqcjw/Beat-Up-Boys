@@ -5,6 +5,6 @@ find_package(SFML 2.6 REQUIRED graphics window system)
 
 include_directories(${SFML_INCLUDE_DIR})
 
-add_executable(MySFMLApp main.cpp render.cpp)
+add_executable(Beat-Up-Boys main.cpp)
 
 target_link_libraries(Beat-Up-Boys sfml-graphics sfml-window sfml-system)
