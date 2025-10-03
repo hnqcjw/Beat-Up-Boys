@@ -15,6 +15,7 @@ enum state { title, charSelect, stageSelect, fight };
         DRAW(BluBoy); \
         DRAW(GreenBoy); \
         DRAW(YelloBoy); \
+        DRAW(pointer); \
         currentBgColor = Color::Black; \
 }
 
