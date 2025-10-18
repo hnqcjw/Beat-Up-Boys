@@ -17,6 +17,11 @@ enum state { title, charSelect, stageSelect, fight };
         DRAW(YelloBoy); \
         DRAW(pointer); \
         currentBgColor = Color::Black; \
-}
+	} \
+	else if (currentState == stageSelect) { \
+		currentBgColor = Color::Green; \
+		DRAW(NatureParkLabel); \
+		DRAW(LavaLandLabel); \
+	}
 
 #endif

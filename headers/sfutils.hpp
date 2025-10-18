@@ -14,4 +14,6 @@
 
 #define KEYPRESSED(K) Keyboard::isKeyPressed(Keyboard::K)
 
+#define COLLIDES(SPRITE1, SPRITE2) SPRITE1.getGlobalBounds().intersects(SPRITE2.getGlobalBounds())
+
 #endif

@@ -9,12 +9,16 @@ using namespace sf;
 int main() {
     RenderWindow window(VideoMode(800, 600), "Beat-Up Boys");
 
-	window.setFramerateLimit(25);
+	bool ptrCanMove = false; // For the pointer
+
+	window.setFramerateLimit(60);
     Font font;
     if (!font.loadFromFile("../assets/tuffy.ttf")) { // LOAD FROM ASSETS
         std::cerr << "No Font";
         return EXIT_FAILURE;
     }
+
+    
     DECLARESPRITE(RedBoy, "../assets/RedBoy.png"); // Refer to headers/render.h
     DECLARESPRITE(BluBoy, "../assets/BluBoy.png");
     DECLARESPRITE(YelloBoy, "../assets/YelloBoy.png");
@@ -28,6 +32,15 @@ int main() {
 	GreenBoy.setPosition({400.f, 100.f});
     GreenBoy.setScale({4.f, 4.f});  
 
+
+	DECLARESPRITE(LavaLandLabel, "../assets/LavaLandLabel.png");
+	DECLARESPRITE(NatureParkLabel, "../assets/NatureParkLabel.png");
+	LavaLandLabel.setPosition({400.f, 100.f});
+	LavaLandLabel.setScale({4.f, 4.f});
+	NatureParkLabel.setPosition({200.f, 100.f});
+    NatureParkLabel.setScale({4.f, 4.f});  
+
+    
    	RectangleShape pointer;
    	pointer.setFillColor(Color::White);
    	pointer.setPosition(125.f, 90.f);
@@ -43,10 +56,11 @@ int main() {
     titleScreen.setStyle(Text::Bold);
     titleScreen.setFillColor(Color::White);
 
-    Text charMenu("CHOOSE YOUR CHARACTER", font, 30);
+    Text charMenu("CHOOSE YOUR CHARACTER, PRESS ENTER TO SELECT.", font, 30);
     charMenu.setFillColor(Color::Red);
 
     while (window.isOpen()) {
+    
         Event event;
         while (window.pollEvent(event)) {
             if (event.type == Event::Closed) {
@@ -59,20 +73,32 @@ int main() {
             window.close();
         }
 
-		if (currentState == charSelect and KEYPRESSED(Right) and pointer.getPosition().x <= 325.f) {
+
+
+     if (currentState == charSelect) { 	
+     		
+		if (KEYPRESSED(Right) and pointer.getPosition().x <= 325.f and ptrCanMove) {
 			pointer.setPosition(Vector2f((pointer.getPosition().x + 100), pointer.getPosition().y));
-		}
-		
-		if (currentState == charSelect and KEYPRESSED(Left) and pointer.getPosition().x >= 225.f) {
+			ptrCanMove = false;
+		}	
+		else if (KEYPRESSED(Left) and pointer.getPosition().x >= 225.f and ptrCanMove) {
 			pointer.setPosition(Vector2f((pointer.getPosition().x - 100), pointer.getPosition().y));
+			ptrCanMove = false;
+		}
+		else if (!(KEYPRESSED(Left) or KEYPRESSED(Right))) {
+			ptrCanMove = true;
 		}
 
+		if (KEYPRESSED(Enter)) {
+			currentState = stageSelect;
+		}
+	}
+		
         if (currentState == title and KEYPRESSED(A)) {
             currentState = charSelect;
         }
         
         render()
-        
         window.display();
         }
     return 0;

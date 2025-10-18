@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.10)
-project(MySFMLProject)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+PROJECT(Beat-Up-Boys)
 
-find_package(SFML 2.6 REQUIRED graphics window system)
+FIND_PACKAGE(SFML 2.6 REQUIRED graphics window system)
 
-include_directories(${SFML_INCLUDE_DIR})
+INCLUDE_DIRECTORIES(${SFML_INCLUDE_DIR})
 
-add_executable(Beat-Up-Boys main.cpp)
+ADD_EXECUTABLE(Beat-Up-Boys main.cpp)
 
-target_link_libraries(Beat-Up-Boys sfml-graphics sfml-window sfml-system)
+TARGET_LINK_LIBRARIES(Beat-Up-Boys sfml-graphics sfml-window sfml-system)
