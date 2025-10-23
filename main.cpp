@@ -32,7 +32,6 @@ int main() {
 	GreenBoy.setPosition({400.f, 100.f});
     GreenBoy.setScale({4.f, 4.f});  
 
-
 	DECLARESPRITE(LavaLandLabel, "../assets/LavaLandLabel.png");
 	DECLARESPRITE(NatureParkLabel, "../assets/NatureParkLabel.png");
 	LavaLandLabel.setPosition({400.f, 100.f});
@@ -73,7 +72,7 @@ int main() {
             window.close();
         }
 
-
+	 std::string charSelected = "";
 
      if (currentState == charSelect) { 	
      		
@@ -90,7 +89,22 @@ int main() {
 		}
 
 		if (KEYPRESSED(Enter)) {
+			switch ( (int) pointer.getPosition().x) {
+				case 125:
+					charSelected = "RedBoy";
+					break;
+				case 225:
+					charSelected = "BluBoy";
+					break;
+				case 325:
+					charSelected = "YelloBoy";
+					break;
+				case 425:
+					charSelected = "GreenBoy";
+					break;
+			}
 			currentState = stageSelect;
+			std::cout << charSelected << std::endl;
 		}
 	}
 		
@@ -98,7 +112,8 @@ int main() {
             currentState = charSelect;
         }
         
-        render()
+        render();
+        
         window.display();
         }
     return 0;
